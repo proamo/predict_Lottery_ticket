@@ -1,32 +1,33 @@
-# 双色球彩票号码预测
+# 雙色球彩券號碼預測
 
-项目比较简单，仅作为娱乐项目，但没想到关注人比预期要多，特此感谢大家关注，祝大家都能发财！
-因为项目本身涉及到爬虫，机器学习，后端服务技术，而且是面向开发者的，我默认大家有这方面技术背景且能解决一些常识问题，故没有做太多细节说明，特此表示抱歉。
-项目仅仅是抛砖引玉，很多地方都不是绝对的，目的是为了感兴趣的朋友可以自定义调试。
+項目較簡單，僅作為娛樂項目，但沒想到關注人比預期多，特此感謝大家關注，祝大家都能發大財！
+因為專案本身涉及爬蟲，機器學習，後端服務技術，而且是面向開發者的，我默認大家有這方面技術背景且能解決一些常識問題，故沒有做太多細節說明，特此表示抱歉。
+項目只是拋磚引玉，很多地方都不是絕對的，目的是為了有興趣的朋友可以自訂調試。
 
 ## Update
-之前有issue反应，因为不同红球模型预测会有重复号码出现，所以将红球序列整体作为一个序列模型看待，推翻之前红球之间相互独立设定，
-因为序列模型预测要引入crf层，相关API必须在 tf.compat.v1.disable_eager_execution()下，故整个模型采用 1.x 构建和训练模式，
-在 2.x 的tensorflow中 tf.compat.v1.XXX 保留了 1.x 的接口方式。
+之前有issue反應，因為不同紅球模型預測會有重複號碼出現，所以將紅球序列整體作為一個序列模型看待，推翻之前紅球之間相互獨立設定，
+因為序列模型預測要引入crf層，相關API必須在 tf.compat.v1.disable_eager_execution()下，故整個模型採用 1.x 建構和訓練模式，
+在 2.x 的tensorflow中 tf.compat.v1.XXX 保留了 1.x 的介面方式。
 
 
 ## Getting Started
-执行 python get_train_data.py 用于获取训练数据，
-如果出现解析错误，应该看看网页 http://datachart.500.com/ssq/history/newinc/history.php 是否可以正常访问
+執行 python get_train_data.py 用於取得訓練數據，
+如果出現解析錯誤，應該看看網頁 http://datachart.500.com/ssq/history/newinc/history.php 是否可以正常訪問
 
-执行 python train_model.py 开始模型训练，先训练红球模型，再训练蓝球模型，模型参数和超参数在 config.py 文件中自行配置
-具体训练时间消耗与模型参数和超参数相关。
+執行 python train_model.py 開始模型訓練，先訓練紅球模型，再訓練藍球模型，模型參數和超參數在 config.py 檔案中自行配置
+具體訓練時間消耗與模型參數和超參數相關。
 
-执行 python run_api.py 启动一个微服务，获取每天预测号码，获取预测访问url为: http://127.0.0.1:5000/predict_api
-服务部署在后台，可以直接在浏览器上每日获取预测结果。
+執行 python run_api.py 啟動一個微服務，取得每天預測號碼，取得預測訪問url為: http://127.0.0.1:5000/predict_api
+服務部署在後台，可以直接在瀏覽器上每日取得預測結果。
 
 ### Installing
 
-python3.6 环境，相关库和版本在 requirements.txt 下
+python3.6 環境，相關函式庫和版本在 requirements.txt 下
 
 pip install -r requirement.txt
 
-若安装存在问题，可手动依次安装，具体安装库产生问题，需自行解决
+若安裝有問題，可手動依序安裝，具體安裝庫產生問題，需自行解決
+
 
 ## Running the tests
 
